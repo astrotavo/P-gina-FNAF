@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adios Charlie</title>
+    <style>
+        body {
+            margin: 0;
+            overflow: hidden;
+            background-color: black;
+        }
+        video {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <video src="videos/Henry’s Speech.mp4" controls id="videoPlayer"></video>
+
+    <script>
+        // Obtener el elemento de video
+        const video = document.getElementById("videoPlayer");
+
+        // Añadir un evento que se activa cuando el video empieza a reproducirse
+        video.addEventListener("play", function () {
+            if (video.requestFullscreen) {
+                video.requestFullscreen();
+            } else if (video.webkitRequestFullscreen) { // Para navegadores basados en WebKit
+                video.webkitRequestFullscreen();
+            } else if (video.mozRequestFullScreen) { // Para Firefox
+                video.mozRequestFullScreen();
+            } else if (video.msRequestFullscreen) { // Para IE/Edge
+                video.msRequestFullscreen();
+            }
+        });
+
+        // Añadir un evento que se activa cuando el video termina
+        video.addEventListener("ended", function () {
+            // Cerrar la ventana o pestaña
+            window.close();
+        });
+    </script>
+</body>
+</html>

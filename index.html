@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Freddy Fazbear's Pizza - Sobrevive</title>
+    <link rel="stylesheet" href="menu.css">
+    <script src="script.js" defer></script>
+</head>
+<body onload="mostrarInicio()">
+    <header>
+        <img src="imagenes/fasber.png" alt="Título" style="max-width: 100%; height: auto;">
+        <nav>
+            <ul>
+                <li><a href="#" onclick="mostrarInicio(); prevenirDesplazamiento(event)">Inicio</a></li>
+                <li><a href="#" onclick="mostrarHistoria(); prevenirDesplazamiento(event)">Historia</a></li>
+                <li><a href="#" onclick="mostrarLibros(); prevenirDesplazamiento(event)">Libros de la Saga</a></li>
+                <li><a href="#" onclick="mostrarPelicula(); prevenirDesplazamiento(event)">Pelicula</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="contenedor">
+        <aside class="menu-lateral">
+            <!-- Contenido del menú lateral -->
+        </aside>
+        <main id="contenido">
+            <!-- El contenido principal se carga aquí mediante JavaScript -->
+            <div class="libros">
+                <div class="libro">
+                    <img id="libro-ojos-de-plata" src="imagenes/Los ojos de plata.jpg" alt="Los ojos de plata">
+                    <br>
+                    <a href="https://www.amazon.com.mx/Five-Nights-Freddys-Ojos-Plata/dp/8416867356">Los ojos de plata</a>
+                    <!-- Descripción oculta -->
+                    <div id="descripcion1" class="descripcion" style="display: none;">
+                        Diez años después de los horribles asesinatos en Freddy Fazbear's Pizza que destrozaron su ciudad, Charlie, cuyo padre era dueño del restaurante, y sus amigos de la infancia se reúnen en el aniversario de la tragedia y se encuentran en la vieja pizzería que había sido cerrada y abandonada durante años. Después de descubrir una forma de entrar, se dan cuenta de que las cosas no son como solían ser. Las cuatro mascotas animatrónicas de tamaño adulto que alguna vez entretuvieron a los clientes han cambiado. Ahora tienen un oscuro secreto... y una agenda asesina.
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script src="menu.js"></script>
+</body>
+</html>

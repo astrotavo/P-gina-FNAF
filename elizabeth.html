@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elizabeth Afton</title>
+    
+    <style>
+        /* Ajustar el tamaño de las imágenes dentro de la sección */
+        .imagen-seccion img {
+            width: 500px;  
+            height: auto;  
+            display: block; 
+            margin: 0 auto; 
+        }
+
+        .imagen-seccion {
+            flex: 0 0 auto; 
+            margin-left: 20px;
+            width: 500px; 
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Courier New', Courier, monospace;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+            background-image: url('imagenes/fondo_terror.jpg');
+            background-size: cover;
+            background-attachment: fixed;
+            transition: background-color 1s ease; /* Animación suave para el cambio de color */
+        }
+
+        header img {
+            width: 500px;
+            height: auto;
+            display: block;
+            margin: 0 auto;
+            animation: EntrarDesdeIzq 1s ease-out forwards; 
+        }
+
+        header {
+            background-color: #600000;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+            border-bottom: 2px solid #ff0000;
+        }
+
+        header h1 {
+            font-size: 2.5em;
+            margin: 0;
+            text-shadow: 2px 2px 5px #ff0000;
+        }
+
+        #contenido {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+        }
+
+        .contenido-seccion {
+            display: flex;
+            flex-direction: column;
+            background-image: url('imagenes/fondo.jpg');
+            background-size: auto;
+            background-repeat: repeat;
+            background-position: top left;
+            padding: 20px;
+            color: white;
+            background-color: rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+        }
+
+        .contenido-seccion .seccion {
+            display: flex;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .contenido-seccion .seccion .texto-seccion {
+            flex: 1;
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 10px;
+        }
+
+        .contenido-seccion .seccion .imagen-seccion {
+            flex: 0 0 200px;
+            margin-left: 20px;
+        }
+
+        .contenido-seccion .seccion .imagen-seccion img {
+            width: 100%;
+            height: auto;
+        }
+
+        footer {
+            background-color: #600000;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            border-top: 2px solid #ff0000;
+        }
+
+        .tachado {
+            text-decoration: line-through;
+            color: red;
+        }
+
+        #jumpscare {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: black;
+            z-index: 9999;
+        }
+
+        #jumpscare video {
+            width: 100%;
+            height: 100%;
+        }
+    </style>
+</head>
+
+<body onload="iniciarEventos()">
+    <header>
+        <img src="imagenes/egg.gif" alt="Título">
+    </header>
+
+    <div id="contenido">
+        <!-- El contenido principal se carga aquí mediante JavaScript -->
+    </div>
+
+    <div id="jumpscare">
+        <video id="videoJumpscare" autoplay></video>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Elizabeth Afton. Todos los derechos reservados.</p>
+    </footer>
+
+    <script>
+        function iniciarEventos() {
+            // Mostrar el contenido al cargar
+            mostrarHistoria();
+
+            // Esperar 10 segundos y reproducir audio y video jumpscare
+            setTimeout(() => {
+                reproducirAudio();
+            }, 10000);
+        }
+
+        function reproducirAudio() {
+            const audio = new Audio('audio/audio2.mp3');
+            audio.play();
+
+            // Cuando el audio termine, reproducir el video jumpscare
+            audio.onended = () => {
+                reproducirVideo();
+            };
+        }
+
+        function reproducirVideo() {
+    const jumpscare = document.getElementById('jumpscare');
+    const video = document.getElementById('videoJumpscare');
+    jumpscare.style.display = 'block';
+    video.src = 'videos/jumpscare.mp4';
+    video.muted = false; // Desactivar mute
+    video.play();
+
+    // Opcional: Ocultar el video después de terminar
+    video.onended = () => {
+        jumpscare.style.display = 'none';
+    };
+}
+
+
+        function mostrarHistoria() {
+            document.getElementById("contenido").innerHTML = ` 
+                <div class="contenido-seccion">
+                    <div class="seccion">
+                        <div class="texto-seccion">
+                            <h3>Apariencia</h3>
+                            <p><span class="tachado">Elizabeth</span> es una niña pequeña de piel clara, cabello anaranjado y ojos verdes. En el momento de su muerte, vestía una camisa rosa con dos botones negros, un lazo rojo en el pelo, una falda azul y zapatos negros.</p>
+                            <p>En la adaptación gráfica de <i>Five Nights at Freddy's: The Freddy Files</i>, fue retratada como una niña de cabello largo y rubio con un lazo azul. Llevaba una camiseta azul con la imagen de un pequeño cono de helado y pantalones azules. Después de obsesionarse con Circus Baby, usa un vestido blanco y azul, una diadema azul en el pelo, una falda azul y zapatos negros. Más tarde, su cabello se cambió a castaño, probablemente para parecerse más a Circus Baby. Su cabello permaneció castaño por el resto de sus apariciones.</p>
+                        </div>
+                        <div class="imagen-seccion">
+                            <img id="imagenElizabeth" src="imagenes/elizabethafton.png" alt="Elizabeth Afton" style="width: 100px; height: auto;">
+                            <a>Elizabeth Afton</a>
+                        </div>
+                    </div>
+
+                    <div class="seccion">
+                        <div class="texto-seccion">
+                            <h3>Personalidad</h3>
+                            <p><span class="tachado">Elizabeth</span> parece ser una niña muy inocente con una fascinación por Circus Baby. Tiene una mentalidad infantil y se maravilla con la capacidad de Baby para hacer helados y globos. A pesar de su naturaleza infantil, también muestra una personalidad más agresiva y malcriada, pidiendo insistentemente a su padre que le dejara ver a Baby. Ella cree que la máquina fue hecha solo para ella como un regalo. Su desobediencia y su insistencia en acercarse a Baby sin la autorización de su padre terminaron en su trágica muerte y en la cancelación de la gran inauguración de Circus Baby's Pizza World.</p>
+                        </div>
+                        <div class="imagen-seccion">
+                            <a href="baby.html" target="_blank" onclick="cambiarContenido()">
+                                <img src="imagenes/circusbaby.gif" alt="Circus Baby" style="width: 200px; height: auto;">
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+
+        function cambiarContenido() {
+            // Cambiar la imagen
+            document.getElementById("imagenElizabeth").src = "imagenes/soul.png";
+
+            // Cambiar el texto de Elizabeth Afton a Circus Baby
+            let textoElementos = document.querySelectorAll(".tachado");
+            textoElementos.forEach(function(element) {
+                element.textContent = "Circus Baby";
+                element.classList.remove("tachado");
+            });
+        }
+    </script>
+</body>
+</html>
